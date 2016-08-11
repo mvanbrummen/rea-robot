@@ -1,3 +1,6 @@
+package au.com.rea.robotsimulation.entity;
+
+import java.awt.Point;
 
 public class TableTopGrid {
 
