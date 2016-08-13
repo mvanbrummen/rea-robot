@@ -47,6 +47,21 @@ public class RobotSimulationTest {
         assertCommands("0,0,SOUTH\n", "PLACE 0,0,SOUTH", "MOVE", "MOVE", "MOVE", "REPORT");
     }
 
+    @Test
+    public void scenario5() {
+        assertCommands("4,4,NORTH\n", "PLACE 4,4,NORTH", "MOVE", "MOVE", "MOVE", "MOVE", "REPORT");
+    }
+
+    @Test
+    public void scenario6() {
+        assertCommands("", "MOVE", "LEFT", "RIGHT", "MOVE", "REPORT");
+    }
+
+    @Test
+    public void scenario7() {
+        assertCommands("4,2,WEST\n", "PLACE 0,0,NORTH", "PLACE 4,2,WEST", "REPORT");
+    }
+
     @After
     public void cleanup() {
         System.setOut(null);

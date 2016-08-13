@@ -17,8 +17,13 @@ public class Robot {
     }
 
     public void place(int x, int y, Direction direction) {
-        Point newPoint = position == null ? new Point(x, y) : position.translate(x, y);
-        if (table.isWithinBounds((newPoint))) {
+        Point newPoint;
+        if (hasBeenPlaced()) {
+            newPoint = position.translate(x, y);
+        } else {
+            newPoint = new Point(x, y);
+        }
+        if (table.isWithinBounds(newPoint)) {
             setPosition(newPoint);
             setDirection(direction);
         }
@@ -32,11 +37,11 @@ public class Robot {
     }
 
     public void left() {
-        direction = direction.rotateLeft();
+        setDirection(direction.rotateLeft());
     }
 
     public void right() {
-        direction = direction.rotateRight();
+        setDirection(direction.rotateRight());
     }
 
     public String report() {

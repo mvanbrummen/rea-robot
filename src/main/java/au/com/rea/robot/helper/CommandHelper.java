@@ -7,14 +7,23 @@ public class CommandHelper {
 
     private Robot robot;
     private boolean isReadyToParseCommand;
+    private final String usage = "Usage:\n" +
+            "    PLACE X,Y,{NSEW}\n" +
+            "    MOVE\n" +
+            "    LEFT\n" +
+            "    RIGHT\n" +
+            "    REPORT\n" +
+            "    QUIT\n";
 
     public CommandHelper(Robot robot) {
         this.isReadyToParseCommand = true;
         this.robot = robot;
     }
 
-    public void parseCommand(String cmd) {
-        if (cmd.startsWith("PLACE")) {
+    public void parseCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
+        if (cmd.equals("QUIT")) {
+            isReadyToParseCommand = false;
+        } else if (cmd.startsWith("PLACE")) {
             cmd = cmd.replace("PLACE ", "");
             String[] params = cmd.split(",");
             int x = Integer.parseInt(params[0]);
@@ -35,9 +44,6 @@ public class CommandHelper {
                     case "REPORT":
                         System.out.print(robot.report());
                         break;
-                    case "QUIT":
-                        isReadyToParseCommand = false;
-                        break;
                 }
             }
         }
@@ -45,6 +51,10 @@ public class CommandHelper {
 
     public boolean isReadyToParseCommand() {
         return isReadyToParseCommand;
+    }
+
+    public void printUsage() {
+        System.out.print(usage);
     }
 
 }

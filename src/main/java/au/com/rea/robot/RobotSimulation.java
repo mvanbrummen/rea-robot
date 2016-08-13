@@ -18,7 +18,13 @@ public class RobotSimulation {
 
         while (commandHelper.isReadyToParseCommand()) {
             System.out.print(PROMPT);
-            commandHelper.parseCommand(input.nextLine());
+            try {
+                commandHelper.parseCommand(input.nextLine());
+            } catch (IllegalArgumentException ex) {
+                commandHelper.printUsage();
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                commandHelper.printUsage();
+            }
         }
     }
 

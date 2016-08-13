@@ -13,11 +13,11 @@ public class Table {
         this.maxPoint = maxPoint;
     }
 
-    public boolean isWithinBounds(Point newPoint) {
-        if (newPoint.x < minPoint.x || newPoint.x >= maxPoint.x) {
+    public boolean isWithinBounds(Point point) {
+        if (point.x < minPoint.x || point.x > maxPoint.x) {
             return false;
         }
-        if (newPoint.y < minPoint.y || newPoint.y >= maxPoint.y) {
+        if (point.y < minPoint.y || point.y > maxPoint.y) {
             return false;
         }
         return true;
