@@ -1,16 +1,16 @@
-package au.com.rea.robotsimulation.helper;
+package au.com.rea.robot.helper;
 
-import au.com.rea.robotsimulation.entity.TableTopGrid;
-import au.com.rea.robotsimulation.enumeration.Direction;
+import au.com.rea.robot.entity.Robot;
+import au.com.rea.robot.enumeration.Direction;
 
 public class CommandHelper {
 
-    private TableTopGrid grid;
+    private Robot robot;
     private boolean isReadyToParseCommand;
 
-    public CommandHelper(TableTopGrid grid) {
+    public CommandHelper(Robot robot) {
         this.isReadyToParseCommand = true;
-        this.grid = grid;
+        this.robot = robot;
     }
 
     public void parseCommand(String cmd) {
@@ -19,21 +19,21 @@ public class CommandHelper {
             String[] params = cmd.split(",");
             int x = Integer.parseInt(params[0]);
             int y = Integer.parseInt(params[1]);
-            grid.getRobot().place(x, y, Direction.valueOf(params[2]));
+            robot.place(x, y, Direction.valueOf(params[2]));
         } else {
-            if (grid.getRobot().hasBeenPlaced()) {
+            if (robot.hasBeenPlaced()) {
                 switch (cmd) {
                     case "MOVE":
-                        grid.getRobot().move();
+                        robot.move();
                         break;
                     case "LEFT":
-                        grid.getRobot().left();
+                        robot.left();
                         break;
                     case "RIGHT":
-                        grid.getRobot().right();
+                        robot.right();
                         break;
                     case "REPORT":
-                        grid.getRobot().report();
+                        System.out.print(robot.report());
                         break;
                     case "QUIT":
                         isReadyToParseCommand = false;

@@ -1,16 +1,21 @@
-package au.com.rea.robotsimulation.enumeration;
+package au.com.rea.robot.enumeration;
 
 public enum Direction {
-    NORTH(1), EAST(1), SOUTH(-1), WEST(-1);
+    NORTH(0, 1), EAST(1, 0), SOUTH(0, -1), WEST(-1, 0);
 
-    private int transform;
+    private int dx, dy;
 
-    Direction(int transform) {
-        this.transform = transform;
+    Direction(int dx, int dy) {
+        this.dx = dx;
+        this.dy = dy;
     }
 
-    public int getTransform() {
-        return this.transform;
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
     }
 
     public Direction rotateLeft() {
