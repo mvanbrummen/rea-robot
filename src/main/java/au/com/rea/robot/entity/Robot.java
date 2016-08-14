@@ -41,12 +41,7 @@ public class Robot {
      * @param direction Face in direction.
      */
     public void place(int x, int y, Direction direction) {
-        Point newPoint;
-        if (hasBeenPlaced()) {
-            newPoint = position.translate(x, y);
-        } else {
-            newPoint = new Point(x, y);
-        }
+        Point newPoint = hasBeenPlaced() ? position.translate(x, y) : new Point(x, y);
         if (table.isWithinBounds(newPoint)) {
             setPosition(newPoint);
             setDirection(direction);

@@ -39,7 +39,7 @@ public class CommandHelperTest {
         commandHelper.parseCommand("PLACE a,b,NORTH");
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void whenNotEnoughValuesThenIllegalArgumentException() {
         commandHelper.parseCommand("PLACE 0,0");
     }

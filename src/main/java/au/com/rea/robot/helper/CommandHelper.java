@@ -36,10 +36,9 @@ public class CommandHelper {
      * Accepts a command string that gets interpreted as behaviour for the Robot.
      *
      * @param cmd Command to be interpreted.
-     * @throws IllegalArgumentException       Thrown from interpretPlaceCommand()
-     * @throws ArrayIndexOutOfBoundsException Thrown from interpretPlaceCommand()
+     * @throws IllegalArgumentException Thrown from interpretPlaceCommand()
      */
-    public void parseCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
+    public void parseCommand(String cmd) throws IllegalArgumentException {
         if (cmd.equals("QUIT")) {
             isReadyToParseCommand = false;
         } else if (cmd.startsWith("PLACE")) {
@@ -53,14 +52,15 @@ public class CommandHelper {
      * Interpret place command to place robot on table.
      *
      * @param cmd The command to be interpreted.
-     * @throws IllegalArgumentException       When Place arguments are incorrect.
-     * @throws ArrayIndexOutOfBoundsException When incorrect number of arguments passed to Place.
+     * @throws IllegalArgumentException When Place arguments are incorrect.
      * @see IllegalArgumentException
-     * @see ArrayIndexOutOfBoundsException
      */
-    private void interpretPlaceCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
+    private void interpretPlaceCommand(String cmd) throws IllegalArgumentException {
         cmd = cmd.replace("PLACE ", "");
         String[] params = cmd.split(",");
+        if (params.length != 3) {
+            throw new IllegalArgumentException();
+        }
         int x = Integer.parseInt(params[0]);
         int y = Integer.parseInt(params[1]);
         robot.place(x, y, Direction.valueOf(params[2]));

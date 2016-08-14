@@ -35,8 +35,6 @@ public class RobotSimulation {
                 commandHelper.parseCommand(input.nextLine());
             } catch (IllegalArgumentException ex) {
                 commandHelper.printUsage();
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                commandHelper.printUsage();
             }
         }
     }
