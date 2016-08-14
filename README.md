@@ -1,6 +1,8 @@
 Toy Robot Simulator
 ===================
 
+[![Build Status](https://travis-ci.org/mvanbrummen/rea-robot.svg?branch=master)](https://travis-ci.org/mvanbrummen/rea-robot)
+
 Requirements
 ------------
 
