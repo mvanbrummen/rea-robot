@@ -1,10 +1,16 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'checkstyle'
 
 mainClassName = "au.com.rea.robot.RobotSimulation"
 
 repositories {
     jcenter()
+}
+
+checkstyle {
+    configFile = file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    toolVersion = '6.1.1'
 }
 
 run {

@@ -47,18 +47,7 @@ public enum Direction {
      * @return Return the rotated direction.
      */
     public Direction rotateLeft() {
-        switch (this) {
-            case NORTH:
-                return WEST;
-            case EAST:
-                return NORTH;
-            case SOUTH:
-                return EAST;
-            case WEST:
-                return SOUTH;
-            default:
-                return null;
-        }
+        return values()[(ordinal() + 3) % 4];
     }
 
     /**
@@ -67,18 +56,7 @@ public enum Direction {
      * @return Return the rotated direction.
      */
     public Direction rotateRight() {
-        switch (this) {
-            case NORTH:
-                return EAST;
-            case EAST:
-                return SOUTH;
-            case SOUTH:
-                return WEST;
-            case WEST:
-                return NORTH;
-            default:
-                return null;
-        }
+        return values()[(ordinal() + 1) % 4];
     }
 
 }
