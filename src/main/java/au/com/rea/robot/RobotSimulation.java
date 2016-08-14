@@ -7,7 +7,20 @@ import au.com.rea.robot.helper.CommandHelper;
 
 import java.util.Scanner;
 
+/**
+ * The main class and entry point for the RobotSimulation program.
+ *
+ * @author Michael Van Brummen
+ * @version 1.0
+ */
 public class RobotSimulation {
+
+    /**
+     * This is the main method that provides an overarching
+     * view of the main loop and instantiates all the entities needed.
+     *
+     * @param args Unused.
+     */
     public static void main(String[] args) {
         final String PROMPT = "> ";
         Table table = new Table(new Point(0, 0), new Point(4, 4));

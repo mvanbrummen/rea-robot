@@ -3,6 +3,12 @@ package au.com.rea.robot.helper;
 import au.com.rea.robot.entity.Robot;
 import au.com.rea.robot.enumeration.Direction;
 
+/**
+ * Helper class to interpret user input and control an instance of robot.
+ *
+ * @author Michael Van Brummen
+ * @version 1.0
+ */
 public class CommandHelper {
 
     private Robot robot;
@@ -15,44 +21,76 @@ public class CommandHelper {
             "    REPORT\n" +
             "    QUIT\n";
 
+    /**
+     * The constructor for CommandHelper class that accepts an instance of Robot
+     * and sets the isReadyToParseCommand state to true.
+     *
+     * @param robot An instance of Robot to be controlled.
+     */
     public CommandHelper(Robot robot) {
         this.isReadyToParseCommand = true;
         this.robot = robot;
     }
 
+    /**
+     * Accepts a command string that gets interpreted as behaviour for the Robot.
+     *
+     * @param cmd Command to be interpreted.
+     * @throws IllegalArgumentException
+     * @throws ArrayIndexOutOfBoundsException
+     * @see IllegalArgumentException
+     * @see ArrayIndexOutOfBoundsException
+     */
     public void parseCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
         if (cmd.equals("QUIT")) {
             isReadyToParseCommand = false;
         } else if (cmd.startsWith("PLACE")) {
-            cmd = cmd.replace("PLACE ", "");
-            String[] params = cmd.split(",");
-            int x = Integer.parseInt(params[0]);
-            int y = Integer.parseInt(params[1]);
-            robot.place(x, y, Direction.valueOf(params[2]));
+            interpretPlaceCommand(cmd);
         } else {
-            if (robot.hasBeenPlaced()) {
-                switch (cmd) {
-                    case "MOVE":
-                        robot.move();
-                        break;
-                    case "LEFT":
-                        robot.left();
-                        break;
-                    case "RIGHT":
-                        robot.right();
-                        break;
-                    case "REPORT":
-                        System.out.print(robot.report());
-                        break;
-                }
+            interpretSubsequentCommand(cmd);
+        }
+    }
+
+    private void interpretPlaceCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
+        cmd = cmd.replace("PLACE ", "");
+        String[] params = cmd.split(",");
+        int x = Integer.parseInt(params[0]);
+        int y = Integer.parseInt(params[1]);
+        robot.place(x, y, Direction.valueOf(params[2]));
+    }
+
+    private void interpretSubsequentCommand(String cmd) {
+        if (robot.hasBeenPlaced()) {
+            switch (cmd) {
+                case "MOVE":
+                    robot.move();
+                    break;
+                case "LEFT":
+                    robot.left();
+                    break;
+                case "RIGHT":
+                    robot.right();
+                    break;
+                case "REPORT":
+                    System.out.print(robot.report());
+                    break;
             }
         }
     }
 
+    /**
+     * Returns the state flag of the CommandHelper to accept commands.
+     *
+     * @return Returns the state flag isReadyToParseCommand.
+     */
     public boolean isReadyToParseCommand() {
         return isReadyToParseCommand;
     }
 
+
+    /**
+     * Prints usage statement to standard out.
+     */
     public void printUsage() {
         System.out.print(usage);
     }

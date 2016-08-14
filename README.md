@@ -9,6 +9,10 @@ To run:
 
 ./gradlew run
 
+To generate javadoc:
+
+./gradlew javadoc
+
 
 Description
 -----------
