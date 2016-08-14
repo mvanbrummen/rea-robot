@@ -1,18 +1,33 @@
 Toy Robot Simulator
 ===================
 
-To test:
+Requirements
+------------
 
-./gradlew test
+JDK 8 installed
+
+Getting Started
+---------------
 
 To run:
 
-./gradlew run
+./runProject or runProject.bat
+
+To test:
+
+./gradlew test
 
 To generate javadoc:
 
 ./gradlew javadoc
 
+To run checkstyle:
+
+./gradlew checkStyleMain
+
+To run code coverage:
+
+./gradlew test jacocoTestReport
 
 Description
 -----------
