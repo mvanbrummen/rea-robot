@@ -11,23 +11,23 @@ Getting Started
 
 To run:
 
-./runProject or runProject.bat
+`./runProject` or `runProject.bat`
 
 To test:
 
-./gradlew test
+`./gradlew test`
 
 To generate javadoc:
 
-./gradlew javadoc
+`./gradlew javadoc`
 
 To run checkstyle:
 
-./gradlew checkStyleMain
+`./gradlew checkStyleMain`
 
 To run code coverage:
 
-./gradlew test jacocoTestReport
+`./gradlew test jacocoTestReport`
 
 Description
 -----------
