@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/* Unit test to exercise the application */
+/* Unit tests to exercise the application */
 public class RobotSimulationTest {
 
     private Table table;

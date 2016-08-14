@@ -51,6 +51,13 @@ public class CommandHelper {
         }
     }
 
+    /**
+     * Interpret place command to place robot on table.
+     *
+     * @param cmd The command to be interpreted.
+     * @throws IllegalArgumentException
+     * @throws ArrayIndexOutOfBoundsException
+     */
     private void interpretPlaceCommand(String cmd) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
         cmd = cmd.replace("PLACE ", "");
         String[] params = cmd.split(",");
@@ -59,6 +66,11 @@ public class CommandHelper {
         robot.place(x, y, Direction.valueOf(params[2]));
     }
 
+    /**
+     * Interpret subsequent commands that are not place.
+     *
+     * @param cmd The command to be interpreted.
+     */
     private void interpretSubsequentCommand(String cmd) {
         if (robot.hasBeenPlaced()) {
             switch (cmd) {
